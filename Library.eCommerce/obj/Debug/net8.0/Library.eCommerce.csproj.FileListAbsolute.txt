@@ -1,0 +1,11 @@
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/bin/Debug/net8.0/Library.eCommerce.deps.json
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/bin/Debug/net8.0/Library.eCommerce.dll
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/bin/Debug/net8.0/Library.eCommerce.pdb
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/Library.eCommerce.GeneratedMSBuildEditorConfig.editorconfig
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/Library.eCommerce.AssemblyInfoInputs.cache
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/Library.eCommerce.AssemblyInfo.cs
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/Library.eCommerce.csproj.CoreCompileInputs.cache
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/Library.eCommerce.dll
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/refint/Library.eCommerce.dll
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/Library.eCommerce.pdb
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/ref/Library.eCommerce.dll
