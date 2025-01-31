@@ -9,3 +9,4 @@
 /Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/refint/Library.eCommerce.dll
 /Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/Library.eCommerce.pdb
 /Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/ref/Library.eCommerce.dll
+/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/Library.eCommerce.sourcelink.json
