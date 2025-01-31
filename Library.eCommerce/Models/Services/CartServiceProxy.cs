@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,29 +9,18 @@ using Assignment1.Models;
 
 namespace Library.eCommerce.Services
 {
-    public class InventoryServiceProxy
+    public class CartServiceProxy
     {
-        private InventoryServiceProxy()
+        private CartServiceProxy()
         {
-            Products = new List<Product?>();
+            Products = new List<Product?>();    //List of products in the cart
         }
 
-        private int LastKey
-        {
-            get
-            {
-                if(!Products.Any())
-                {
-                    return 0;
-                }
-                return Products.Select(p => p?.Id ?? 0).Max();
-            }
-        }
 
-        private static InventoryServiceProxy? instance;
+        private static CartServiceProxy? instance;
         private static object instanceLock = new object();
 
-        public static InventoryServiceProxy Current
+        public static CartServiceProxy Current
         {
             get
             {
@@ -38,24 +28,20 @@ namespace Library.eCommerce.Services
                 {
                     if(instance == null)
                     {
-                        instance = new InventoryServiceProxy();
+                        instance = new CartServiceProxy();
                     }
                 }
                 return instance;
             }
         }
 
-        public List<Product?> Products {get; private set;} //Maybe make this a dictionary? The key would be the product ID and the quantity of said product would be the values.
+        public List<Product?> Products {get; private set;}
 
 
         public Product AddOrUpdate(Product product)
         {
-           if (product.Id == 0)
-           {
-                product.Id = LastKey + 1;
-                Products.Add(product);
-           }
-           
+            Products.Add(product);
+
 
             return product;
         }
@@ -73,5 +59,18 @@ namespace Library.eCommerce.Services
             return product;
         }
 
+       public decimal calTotal()
+        {
+            decimal Total = 0;
+            //Calculate the total price of all products in the cart
+            foreach (Product? product in Products)
+            {
+
+                Total += (product?.Price ?? 0) * product.Quantity;
+            }
+
+            //Print out the total price
+            return Total;
+        }
     }
 }
