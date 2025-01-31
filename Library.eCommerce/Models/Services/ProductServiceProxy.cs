@@ -60,16 +60,6 @@ namespace Library.eCommerce.Services
             return product;
         }
 
-        public Product Update(Product product)
-        {
-            var existingProduct = Products.FirstOrDefault(p => p?.Id == product.Id);
-            if(existingProduct != null)
-            {
-                existingProduct.Name = product.Name;
-            }
-            return existingProduct;
-        }
-
         public Product? Delete(int id)
         {
             if (id == 0)
