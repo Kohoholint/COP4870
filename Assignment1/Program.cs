@@ -69,9 +69,8 @@ namespace MyApp
                 }
 
             } while (choice != 'Q' && choice != 'q');
+            
             Console.ReadLine();
         }
-        
-
     }
 }
