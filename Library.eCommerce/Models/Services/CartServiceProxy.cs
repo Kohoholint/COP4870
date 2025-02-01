@@ -40,6 +40,12 @@ namespace Library.eCommerce.Services
 
         public Product AddOrUpdate(Product product)
         {
+            var existingProduct = Products.FirstOrDefault(p => p.Id == product.Id);
+            if (existingProduct != null)
+            {
+                existingProduct.Quantity = product.Quantity;
+                return existingProduct;
+            }
             Products.Add(product);
 
 
