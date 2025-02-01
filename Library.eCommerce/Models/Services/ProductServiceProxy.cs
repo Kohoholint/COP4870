@@ -8,9 +8,9 @@ using Assignment1.Models;
 
 namespace Library.eCommerce.Services
 {
-    public class ProductServiceProxy
+    public class InventoryServiceProxy
     {
-        private ProductServiceProxy()
+        private InventoryServiceProxy()
         {
             Products = new List<Product?>();
         }
@@ -27,10 +27,10 @@ namespace Library.eCommerce.Services
             }
         }
 
-        private static ProductServiceProxy? instance;
+        private static InventoryServiceProxy? instance;
         private static object instanceLock = new object();
 
-        public static ProductServiceProxy Current
+        public static InventoryServiceProxy Current
         {
             get
             {
@@ -38,14 +38,14 @@ namespace Library.eCommerce.Services
                 {
                     if(instance == null)
                     {
-                        instance = new ProductServiceProxy();
+                        instance = new InventoryServiceProxy();
                     }
                 }
                 return instance;
             }
         }
 
-        public List<Product?> Products {get; private set;}
+        public List<Product?> Products {get; private set;} //Maybe make this a dictionary? The key would be the product ID and the quantity of said product would be the values.
 
 
         public Product AddOrUpdate(Product product)
