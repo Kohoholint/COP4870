@@ -19,15 +19,30 @@ namespace MyApp
             List<Product?> list = InventoryServiceProxy.Current.Products;
             List<Product?> cart = CartServiceProxy.Current.Products;
 
-            if (Console.ReadLine() == "I" || Console.ReadLine() == "i")
+            char choice = 'Z';
+            while (true)
             {
-                InventoryMenu(list, cart);
-            }
-            else
-            {
-                CartMenu(cart,list);
-            }
+                string? input = Console.ReadLine();
+                choice = input[0];
+                switch(choice) 
+                {
+                    case 'I':
+                    case 'i':
+                        InventoryMenu(list, cart);
+                        break;
 
+                    case 'C':
+                    case 'c':
+                        CartMenu(cart, list);
+                        break;
+
+                    default:
+                        Console.WriteLine("Error: Unknown Command");
+                        break;
+                    
+                }
+
+            }
 
         }
 
@@ -163,12 +178,21 @@ namespace MyApp
                         //Select one of the products
                         Console.WriteLine("Which item would you like to update?");
                         selection = int.Parse(Console.ReadLine() ?? "-1");
-                        selectedProd = cart.FirstOrDefault(p => p.Id == selection);
+                        selectedProd = list.FirstOrDefault(p => p.Id == selection);
+                        var prodInCart = cart.FirstOrDefault(p => p.Id == selection);
 
                         if (selectedProd != null)
                         {
-                            selectedProd.Quantity = int.Parse(Console.ReadLine() ?? "0");
-                            CartServiceProxy.Current.AddOrUpdate(selectedProd);
+                            int quantity = int.Parse(Console.ReadLine() ?? "0");
+                            if (quantity <= selectedProd.Quantity)
+                            {
+                                prodInCart.Quantity = quantity;
+                                CartServiceProxy.Current.AddOrUpdate(prodInCart);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error: Not enough in stock");
+                            }
                         }
                         break;
 
