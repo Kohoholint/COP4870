@@ -10,3 +10,15 @@
 /Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/Library.eCommerce.pdb
 /Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/ref/Library.eCommerce.dll
 /Users/valeriatorres/Desktop/COP4870/Library.eCommerce/obj/Debug/net8.0/Library.eCommerce.sourcelink.json
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\bin\Debug\net8.0\Library.eCommerce.deps.json
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\bin\Debug\net8.0\Library.eCommerce.dll
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\bin\Debug\net8.0\Library.eCommerce.pdb
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\Library.eCommerce.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\Library.eCommerce.AssemblyInfoInputs.cache
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\Library.eCommerce.AssemblyInfo.cs
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\Library.eCommerce.csproj.CoreCompileInputs.cache
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\Library.eCommerce.sourcelink.json
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\Library.eCommerce.dll
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\refint\Library.eCommerce.dll
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\Library.eCommerce.pdb
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\ref\Library.eCommerce.dll

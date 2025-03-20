@@ -27,32 +27,40 @@
     ]
   },
   "packageFolders": {
-    "/Users/valeriatorres/.nuget/packages/": {}
+    "C:\\Users\\17875\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/valeriatorres/Desktop/COP4870/Assignment1/Assignment1.csproj",
+      "projectUniqueName": "C:\\Users\\17875\\source\\repos\\Kohoholint\\COP4870\\Assignment1\\Assignment1.csproj",
       "projectName": "Assignment1",
-      "projectPath": "/Users/valeriatorres/Desktop/COP4870/Assignment1/Assignment1.csproj",
-      "packagesPath": "/Users/valeriatorres/.nuget/packages/",
-      "outputPath": "/Users/valeriatorres/Desktop/COP4870/Assignment1/obj/",
+      "projectPath": "C:\\Users\\17875\\source\\repos\\Kohoholint\\COP4870\\Assignment1\\Assignment1.csproj",
+      "packagesPath": "C:\\Users\\17875\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\17875\\source\\repos\\Kohoholint\\COP4870\\Assignment1\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/valeriatorres/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\17875\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/Library.eCommerce.csproj": {
-              "projectPath": "/Users/valeriatorres/Desktop/COP4870/Library.eCommerce/Library.eCommerce.csproj"
+            "C:\\Users\\17875\\source\\repos\\Kohoholint\\COP4870\\Library.eCommerce\\Library.eCommerce.csproj": {
+              "projectPath": "C:\\Users\\17875\\source\\repos\\Kohoholint\\COP4870\\Library.eCommerce\\Library.eCommerce.csproj"
             }
           }
         }
@@ -66,7 +74,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -87,7 +96,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

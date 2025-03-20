@@ -86,8 +86,7 @@ namespace MyApp
                         Console.WriteLine("Which product would you like to update?");
                         int selection = int.Parse(Console.ReadLine() ?? "-1");
                         var selectedProd = list.FirstOrDefault(p => p.Id == selection);
-
-                        if (selectedProd != null)
+                               
                         {
                             selectedProd.Name = Console.ReadLine() ?? "ERROR";
                             selectedProd.Price = decimal.Parse(Console.ReadLine() ?? "0");
