@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assignment1.Models;
+using Library.eCommerce.Models;
 using Library.eCommerce.Services;
 
 namespace Maui.eCommerce.ViewModels
@@ -13,13 +14,13 @@ namespace Maui.eCommerce.ViewModels
         public string? Name { 
             get
             {
-                return Model?.Name;
+                return Model?.Product?.Name ?? string.Empty;
             }
             set
             {
-                if (Model != null && Model.Name != value)
+                if (Model != null && Model.Product?.Name != value)
                 {
-                    Model.Name = value;
+                    Model.Product.Name = value;
                 }
             }
         }
@@ -27,16 +28,17 @@ namespace Maui.eCommerce.ViewModels
         {
             get
             {
-                return Model?.Price ?? 0;
+                return Model?.Product?.Price ?? 0;
             }
             set
             {
                 if (Model != null)
                 {
-                    Model.Price = value;
+                    Model.Product.Price = value;
                 }
             }
         }
+        /*
         public int Quantity {
             get
             {
@@ -50,20 +52,20 @@ namespace Maui.eCommerce.ViewModels
                 }
             }
         }
-
-        public Product? Model { get; set; }
+*/
+        public Item? Model { get; set; }
 
         public void AddOrUpdate()
         {
-            InventoryServiceProxy.Current.AddOrUpdate(Model);
+            ProductServiceProxy.Current.AddOrUpdate(Model);
         }
 
         public ProductViewModel ()
         {
-            Model = new Product();
+            Model = new Item();
         }
 
-        public ProductViewModel(Product? model)
+        public ProductViewModel(Item? model)
         {
             Model = model;
         }

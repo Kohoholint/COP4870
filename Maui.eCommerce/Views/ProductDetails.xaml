@@ -17,12 +17,13 @@
             HorizontalOptions="Center" />
         <Entry
             Text="{Binding Price}" />
+        <!--
         <Label
             Text="Quantity"
             VerticalOptions="Center"
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" /> 
         <Entry
-            Text="{Binding Quantity}" />
+            Text="{Binding Quantity}" />-->
         <Button 
             Text="OK"
             Clicked="OkClicked" />

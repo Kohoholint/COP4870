@@ -9,7 +9,7 @@ public partial class ProductDetails : ContentPage
 	public ProductDetails()
 	{
 		InitializeComponent();
-		BindingContext = new ProductViewModel();
+		//BindingContext = new ProductViewModel();
     }
 
     public int ProductId { get; set; }
@@ -34,7 +34,7 @@ public partial class ProductDetails : ContentPage
         else
         {
 
-            BindingContext = new ProductViewModel(InventoryServiceProxy.Current.GetById(ProductId));
+            BindingContext = new ProductViewModel(ProductServiceProxy.Current.GetById(ProductId));
         }
         
     }
