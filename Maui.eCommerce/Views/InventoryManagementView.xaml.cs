@@ -5,7 +5,7 @@ namespace Maui.eCommerce.Views;
 
 public partial class InventoryManagementView : ContentPage
 {
-	public InventoryManagementView()
+	public InventoryManagementView() 
 	{
 		InitializeComponent();
 		BindingContext = new InventoryManagementViewModel();

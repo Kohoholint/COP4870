@@ -15,7 +15,7 @@ namespace Library.eCommerce.Services
             Products = new List<Product?>
             {
                 new Product { Id = 1, Name = "Bbhone", Price = 1000.00m, Quantity = 100 },
-                new Product { Id = 2, Name = "BacBook", Price = 300.00m, Quantity = 100 },
+                new Product { Id = 2, Name = "BacBook", Price = 3000.00m, Quantity = 100 },
                 new Product { Id = 3, Name = "Bapple Batch", Price = 300.00m, Quantity = 100 }
             };
         }
