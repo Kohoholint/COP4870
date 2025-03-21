@@ -50,8 +50,7 @@ namespace Library.eCommerce.Services
             }
         }
 
-        public List<Product?> Products {get; private set;} //Maybe make this a dictionary? The key would be the product ID and the quantity of said product would be the values.
-
+        public List<Product?> Products {get; private set;} 
 
         public Product AddOrUpdate(Product product)
         {
@@ -72,10 +71,15 @@ namespace Library.eCommerce.Services
                 return null;
             }
 
-            Product? product = Products.FirstOrDefault(p => p.Id == id);
+            Product? product = Products.FirstOrDefault(p => p?.Id == id);
             Products.Remove(product);
 
             return product;
+        }
+
+        public Product? GetById(int id)
+        {
+            return Products.FirstOrDefault(p => p?.Id == id);
         }
 
     }

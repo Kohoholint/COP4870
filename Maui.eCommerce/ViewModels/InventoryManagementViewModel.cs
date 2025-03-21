@@ -27,7 +27,10 @@ namespace Maui.eCommerce.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-
+        public void RefreshProductList()
+        {
+            NotifyPropertyChanged(nameof(Products));
+        }
 
         public ObservableCollection<Product?> Products
         {

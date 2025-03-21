@@ -3,6 +3,7 @@ using Maui.eCommerce.ViewModels;
 
 namespace Maui.eCommerce.Views;
 
+[QueryProperty(nameof(ProductId), "productId")]
 public partial class ProductDetails : ContentPage
 {
 	public ProductDetails()
@@ -11,6 +12,8 @@ public partial class ProductDetails : ContentPage
 		BindingContext = new ProductViewModel();
     }
 
+    public int ProductId { get; set; }
+    
     private void GoBackClicked(object sender, EventArgs e)
     {
 		Shell.Current.GoToAsync("//InventoryManagement");
@@ -18,10 +21,21 @@ public partial class ProductDetails : ContentPage
 
     private void OkClicked(object sender, EventArgs e)
     {
-        var name = (BindingContext as ProductViewModel)?.Name;
-        decimal price = ((ProductViewModel)BindingContext).Price;
-        int quantity = (int)((ProductViewModel)BindingContext).Quantity;
-        InventoryServiceProxy.Current.AddOrUpdate(new Assignment1.Models.Product { Name = name, Price = price, Quantity = quantity });
+        (BindingContext as ProductViewModel).AddOrUpdate();
         Shell.Current.GoToAsync("//InventoryManagement");
+    }
+
+    private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
+    {
+        if(ProductId == 0)
+        {
+            BindingContext = new ProductViewModel();
+        }
+        else
+        {
+
+            BindingContext = new ProductViewModel(InventoryServiceProxy.Current.GetById(ProductId));
+        }
+        
     }
 }
