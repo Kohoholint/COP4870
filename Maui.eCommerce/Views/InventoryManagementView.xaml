@@ -5,6 +5,14 @@
              Title="InventoryManagementView"
              NavigatedTo="ContentPage_NavigatedTo">
     <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Query}" Grid.Column="0"/>
+                <Button Text="Search" Grid.Column="1" Clicked="SearchClicked"/>
+        </Grid>
         <Label 
             Text="Inventory Management!"
             VerticalOptions="Center" 
