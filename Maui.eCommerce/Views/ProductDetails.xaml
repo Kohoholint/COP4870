@@ -5,9 +5,26 @@
              Title="ProductDetails">
     <VerticalStackLayout>
         <Label 
-            Text="Product Details"
+            Text="Name:"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Entry
+            Text="{Binding Name}" />
+        <Label 
+            Text="Price"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+        <Entry
+            Text="{Binding Price}" />
+        <Label
+            Text="Quantity"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+        <Entry
+            Text="{Binding Quantity}" />
+        <Button 
+            Text="OK"
+            Clicked="OkClicked" />
 
         <Button Text="Go Back"
                 Clicked="GoBackClicked" />
