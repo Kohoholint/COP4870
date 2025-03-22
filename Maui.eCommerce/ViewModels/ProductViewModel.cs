@@ -38,21 +38,21 @@ namespace Maui.eCommerce.ViewModels
                 }
             }
         }
-        /*
-        public int Quantity {
+       
+        public int? Quantity {
             get
             {
-                return Model?.Quantity ?? 0;
+                return Model?.Quantity;
             }
             set
             {
-                if (Model != null)
+                if (Model != null && Model.Quantity != value)
                 {
                     Model.Quantity = value;
                 }
             }
         }
-*/
+
         public Item? Model { get; set; }
 
         public void AddOrUpdate()

@@ -6,13 +6,15 @@ using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 using Assignment1.Models;
+using Library.eCommerce.Models;
 
 namespace Library.eCommerce.Services
 {
     public class ShoppingCartServiceProxy
     {
-        private List<Product?> items;
-        public List<Product?> cartItems
+        private ProductServiceProxy _prodSvc;
+        private List<Item?> items;
+        public List<Item?> cartItems
         {
             get
             {
@@ -23,7 +25,7 @@ namespace Library.eCommerce.Services
         public static ShoppingCartServiceProxy? instance;
         private ShoppingCartServiceProxy()
         {
-            items = new List<Product?>();
+            items = new List<Item?>();
         }
         /*
         public decimal calTotal()
