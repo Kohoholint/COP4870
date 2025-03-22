@@ -12,7 +12,7 @@ namespace Library.eCommerce.Services
 {
     public class ShoppingCartServiceProxy
     {
-        private ProductServiceProxy _prodSvc;
+        private ProductServiceProxy _prodSvc = ProductServiceProxy.Current;
         private List<Item?> items;
         public List<Item?> cartItems
         {
@@ -22,11 +22,56 @@ namespace Library.eCommerce.Services
             }
         }
 
+        public static ShoppingCartServiceProxy Current
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ShoppingCartServiceProxy();
+                }
+                return instance;
+            }
+        }
+
+
+
         public static ShoppingCartServiceProxy? instance;
         private ShoppingCartServiceProxy()
         {
             items = new List<Item?>();
         }
+
+        public Item? AddOrUpdate(Item item)
+        {
+            var existingInvItem = _prodSvc.GetById(item.Id);
+            if (existingInvItem == null || existingInvItem.Quantity == 0)
+            {
+                return null;
+            }
+            
+            if (existingInvItem != null)
+            {
+                existingInvItem.Quantity--;
+            }
+
+            var existingItem = cartItems.FirstOrDefault(i => i.Id == item.Id);
+            if (existingItem == null)
+            {
+                var newItem = new Item(item);
+                newItem.Quantity = 1;
+                cartItems.Add(newItem);
+            }
+            else
+            {
+                existingItem.Quantity++;
+            }
+
+            return existingInvItem;
+        }
+
+
+
         /*
         public decimal calTotal()
         {

@@ -29,6 +29,7 @@ namespace Library.eCommerce.Models
         public Item()
         {
             Product = new Product();
+            Quantity = 0;
         }
 
         public Item(Item i)
