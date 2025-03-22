@@ -30,6 +30,13 @@ namespace Assignment1.Models
             Name = string.Empty;
         }
 
+        public Product(Product p)
+        {
+            Name = p.Name;
+            Id = p.Id;
+            Price = p.Price;
+        }
+
         public override string ToString()
         {
             return Display ?? string.Empty;
