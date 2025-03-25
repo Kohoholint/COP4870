@@ -19,7 +19,7 @@ namespace Maui.eCommerce.ViewModels
                 return cart.calTotal();
             }
         }
-        private decimal WithTax = 0.0m;
+        //private decimal WithTax = 0.0m;
 
         public ObservableCollection<Item?> ShoppingCart
         {

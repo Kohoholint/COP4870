@@ -101,7 +101,6 @@ namespace Library.eCommerce.Services
             //Calculate the total price of all products in the cart
             foreach (var item in cartItems)
             {
-                //TODO: FIX THIS
                 if (item?.Product != null && item.Quantity > 0)
                 {
                     Total += item.Product.Price * (item.Quantity ?? 0);

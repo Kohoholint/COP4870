@@ -33,7 +33,7 @@ namespace Maui.eCommerce.ViewModels
             }
             set
             {
-                if (Model != null)
+                if (Model != null && Model.Product.Price != value)
                 {
                     Model.Product.Price = value;
                 }
