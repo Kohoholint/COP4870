@@ -6,16 +6,16 @@ namespace Maui.eCommerce.Views;
 [QueryProperty(nameof(ProductId), "productId")]
 public partial class ProductDetails : ContentPage
 {
-	public ProductDetails()
-	{
-		InitializeComponent();
-		BindingContext = new ProductViewModel();
+    public ProductDetails()
+    {
+        InitializeComponent();
     }
 
     public int ProductId { get; set; }
     
     private void GoBackClicked(object sender, EventArgs e)
     {
+        (BindingContext as ProductViewModel).Undo();
 		Shell.Current.GoToAsync("//InventoryManagement");
     }
 
@@ -34,7 +34,7 @@ public partial class ProductDetails : ContentPage
         else
         {
 
-            BindingContext = new ProductViewModel(InventoryServiceProxy.Current.GetById(ProductId));
+            BindingContext = new ProductViewModel(ProductServiceProxy.Current.GetById(ProductId));
         }
         
     }
