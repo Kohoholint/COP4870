@@ -95,20 +95,22 @@ namespace Library.eCommerce.Services
 
             return itemToReturn;
         }
-
-        /*
         public decimal calTotal()
         {
             decimal Total = 0;
             //Calculate the total price of all products in the cart
-            foreach (Product? product in Products)
+            foreach (var item in cartItems)
             {
                 //TODO: FIX THIS
-                //Total += (product?.Price ?? 0) * product.Quantity;
+                if (item?.Product != null && item.Quantity > 0)
+                {
+                    Total += item.Product.Price * (item.Quantity ?? 0);
+                }
             }
 
+            Total *= 1.07m; //Add 7% tax to the total price
             //Print out the total price
             return Total;
-        } */
+        }
     }
 }

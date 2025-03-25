@@ -1,4 +1,6 @@
 namespace Maui.eCommerce.Views;
+
+using System.Net.WebSockets;
 using Maui.eCommerce.ViewModels;
 
 public partial class ShopView : ContentPage
@@ -23,4 +25,12 @@ public partial class ShopView : ContentPage
     {
         (BindingContext as ShoppingViewModel).ReturnItem();
     }
+
+    private void CheckoutClicked(object sender, EventArgs e)
+    {
+        var cart = (BindingContext as ShoppingViewModel)?.ShoppingCart;
+        Shell.Current.GoToAsync("//Checkout");
+
+    }
+
 }

@@ -20,7 +20,7 @@ namespace Assignment1.Models
         {
             get
             {
-                return $"{Id}. {Name}\n ${Price} \n";
+                return $"{Id}. {Name}\n (${Price}) \n";
                 //return $"{Id}. {Name} ${Price} \n Quantity: {Quantity}";
             }
         }
