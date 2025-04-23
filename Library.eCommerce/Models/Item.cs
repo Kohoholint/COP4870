@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Assignment1.Models;
+using Library.eCommerce.DTO;
+using Library.eCommerce.Services;
 
 namespace Library.eCommerce.Models
 {
     public class Item
     {
         public int Id { get; set; }
-        public Product Product { get; set; }
+        public ProductDTO Product { get; set; }
         public int? Quantity { get; set; }
+
 
         public override string ToString()
         {
@@ -22,21 +26,23 @@ namespace Library.eCommerce.Models
         {
             get
             {
-                return Product?.Display ?? string.Empty;
+                return $"{Product?.Display ?? string.Empty}Quantity:{Quantity}";
             }
         }
 
         public Item()
         {
-            Product = new Product();
+            Product = new ProductDTO();
             Quantity = 0;
+
         }
 
         public Item(Item i)
         {
-            Product = new Product(i.Product);
+            Product = new ProductDTO(i.Product);
             Quantity = i.Quantity;
             Id = i.Id;
+
         }
     }
 }

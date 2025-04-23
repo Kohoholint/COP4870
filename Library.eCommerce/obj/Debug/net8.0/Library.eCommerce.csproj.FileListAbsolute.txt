@@ -22,3 +22,4 @@ C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.
 C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\refint\Library.eCommerce.dll
 C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\Library.eCommerce.pdb
 C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\ref\Library.eCommerce.dll
+C:\Users\17875\source\repos\Kohoholint\COP4870\Library.eCommerce\obj\Debug\net8.0\Library.eCommerce.csproj.AssemblyReference.cache

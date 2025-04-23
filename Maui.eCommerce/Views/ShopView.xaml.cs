@@ -33,4 +33,8 @@ public partial class ShopView : ContentPage
 
     }
 
+    private void InlineAddClicked(object sender, EventArgs e)
+    {
+        (BindingContext as ShoppingViewModel).RefreshUX();
+    }
 }

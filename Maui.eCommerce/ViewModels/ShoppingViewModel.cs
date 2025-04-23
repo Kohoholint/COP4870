@@ -15,24 +15,26 @@ namespace Maui.eCommerce.ViewModels
     {
         private ProductServiceProxy _invSvc = ProductServiceProxy.Current;
         private ShoppingCartServiceProxy _cartSvc = ShoppingCartServiceProxy.Current;
-        public Item? SelectedItem { get; set; }
-        public Item? SelectedCartItem { get; set; }
+        public ItemViewModel? SelectedItem { get; set; }
+        public ItemViewModel? SelectedCartItem { get; set; }
 
-        public ObservableCollection<Item?> Inventory
+        public ObservableCollection<ItemViewModel?> Inventory
         {
             get
             {
-                return new ObservableCollection<Item?>(_invSvc.Products
-                    .Where(i => i?.Quantity > 0));
+                return new ObservableCollection<ItemViewModel?>(_invSvc.Products
+                    .Where(i => i?.Quantity > 0).Select(m => new ItemViewModel(m))
+                    );
             }
         }
 
-        public ObservableCollection<Item?> ShoppingCart
+        public ObservableCollection<ItemViewModel?> ShoppingCart
         {
             get
             {
-                return new ObservableCollection<Item?>(_cartSvc.cartItems
-                    .Where(i => i?.Quantity > 0));
+                return new ObservableCollection<ItemViewModel?>(_cartSvc.cartItems
+                    .Where(i => i?.Quantity > 0).Select(m => new ItemViewModel(m))
+                    );
             }
         }
 
@@ -49,12 +51,18 @@ namespace Maui.eCommerce.ViewModels
 
         }
 
+        public void RefreshUX()
+        {
+            NotifyPropertyChanged(nameof(Inventory));
+            NotifyPropertyChanged(nameof(ShoppingCart));
+        }
+
         public void PurchaseItem()
         {
             if (SelectedItem != null)
             {
-                var shouldRefresh = SelectedItem.Quantity >= 1;
-                var updatedItem = _cartSvc.AddOrUpdate(SelectedItem);
+                var shouldRefresh = SelectedItem.Model.Quantity >= 1;
+                var updatedItem = _cartSvc.AddOrUpdate(SelectedItem.Model);
 
                 if (updatedItem != null && shouldRefresh)
                 {
@@ -70,8 +78,8 @@ namespace Maui.eCommerce.ViewModels
         {
             if (SelectedCartItem != null)
             {
-                var shouldRefresh = SelectedCartItem.Quantity >= 1;
-                var updatedItem = _cartSvc.ReturnItem(SelectedCartItem);
+                var shouldRefresh = SelectedCartItem.Model.Quantity >= 1;
+                var updatedItem = _cartSvc.ReturnItem(SelectedCartItem.Model);
 
                 if (updatedItem != null && shouldRefresh)
                 {

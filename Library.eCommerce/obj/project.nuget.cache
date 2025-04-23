@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "jgJ10KbB8xs=",
+  "dgSpecHash": "cBTkqKHBHXM=",
   "success": true,
   "projectFilePath": "C:\\Users\\17875\\source\\repos\\Kohoholint\\COP4870\\Library.eCommerce\\Library.eCommerce.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\17875\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -36,12 +36,12 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding Id}"/>
-                                <Label Grid.Column="1" Text="{Binding Product.Name}"/>
-                                <Label Grid.Column="2" Text="{Binding Product.Price}"/>
+                                <Label Grid.Column="0" Text="{Binding Model.Id}"/>
+                                <Label Grid.Column="1" Text="{Binding Model.Product.Name}"/>
+                                <Label Grid.Column="2" Text="{Binding Model.Product.Price}"/>
                                 <Label Grid.Column="3" Text="x"/>
-                                <Label Grid.Column="4" Text="{Binding Quantity}"/>
-                                <Button Grid.Column="5" Text="+"/>
+                                <Label Grid.Column="4" Text="{Binding Model.Quantity}"/>
+                                    <Button Grid.Column="5" Text="+" Command="{Binding AddCommand}" Clicked="InlineAddClicked"/>
 
                                 </Grid>
                             </ViewCell>
@@ -76,11 +76,11 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Text="{Binding Id}"/>
-                                    <Label Grid.Column="1" Text="{Binding Product.Name}"/>
-                                    <Label Grid.Column="2" Text="{Binding Product.Price}"/>
+                                    <Label Grid.Column="0" Text="{Binding Model.Id}"/>
+                                    <Label Grid.Column="1" Text="{Binding Model.Product.Name}"/>
+                                    <Label Grid.Column="2" Text="{Binding Model.Product.Price}"/>
                                     <Label Grid.Column="3" Text="x"/>
-                                    <Label Grid.Column="4" Text="{Binding Quantity}"/>
+                                    <Label Grid.Column="4" Text="{Binding Model.Quantity}"/>
                                     <Button Grid.Column="5" Text="-"/>
                                 </Grid>
                             </ViewCell>
