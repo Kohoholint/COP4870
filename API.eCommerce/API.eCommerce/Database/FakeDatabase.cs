@@ -1,9 +1,10 @@
-﻿using Library.eCommerce.DTO;
+﻿using Assignment1.Models;
+using Library.eCommerce.DTO;
 using Library.eCommerce.Models;
 
 namespace API.eCommerce.Database
 {
-    public class FakeDatabase
+    public static class FakeDatabase
     {
         private static List<Item?> inventory = new List<Item?>
             {
@@ -12,6 +13,18 @@ namespace API.eCommerce.Database
                 new Item { Product = new ProductDTO { Id = 3, Name = "Bapple Batch WEB", Price = 300.00m }, Id = 3, Quantity = 3 }
         };
 
+        public static int Lastkey_Item
+        {
+            get
+            {
+                if (!inventory.Any())
+                {
+                    return 0;
+                }
+                return inventory.Select(p => p?.Id ?? 0).Max();
+            }
+        }
+
         public static List<Item?> Inventory
         {
             get
@@ -19,5 +32,12 @@ namespace API.eCommerce.Database
                 return inventory;
             }
         }
+
+        public static IEnumerable<Item> Search(string? query)
+        {
+            return Inventory.Where(p => p?.Product?.Name?.ToLower()
+                .Contains(query?.ToLower() ?? string.Empty) ?? false);
+        }
+        
     }
 }
