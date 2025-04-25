@@ -39,7 +39,23 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Text="Total" />
+            <Label Grid.Column="0" Text="SUBTOTAL " />
+            <Label Grid.Column="2" Text="{Binding SubTotal}"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="TAX " />
+            <Label Grid.Column="2" Text="{Binding Tax}"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="TOTAL " />
             <Label Grid.Column="2" Text="{Binding Total}"/>
         </Grid>
     </VerticalStackLayout>

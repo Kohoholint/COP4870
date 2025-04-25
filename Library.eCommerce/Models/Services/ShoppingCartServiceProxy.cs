@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Assignment1.Models;
 using Library.eCommerce.Models;
+using Library.eCommerce.Util;
+using Library.eCommerce.Utilities;
+using Newtonsoft.Json;
 
 namespace Library.eCommerce.Services
 {
@@ -14,6 +17,8 @@ namespace Library.eCommerce.Services
     {
         private ProductServiceProxy _prodSvc = ProductServiceProxy.Current;
         private List<Item?> items;
+
+        
         public List<Item?> cartItems
         {
             get
@@ -35,15 +40,35 @@ namespace Library.eCommerce.Services
         }
 
 
-
         public static ShoppingCartServiceProxy? instance;
         private ShoppingCartServiceProxy()
         {
-            items = new List<Item?>();
+            var productPayload = new WebRequestHandler().Get("/ShoppingCart").Result;
+            items = JsonConvert.DeserializeObject<List<Item>>(productPayload) ?? new List<Item?>();
+        }
+
+        public async Task<IEnumerable<Item?>> Search(string? query)
+        {
+            if (query == null)
+            {
+                return new List<Item>();
+            }
+            var response = await new WebRequestHandler().Post("/ShoppingCart/Search", new QueryRequest { Query = query });
+            // Fixes a bug that stops full inventory from being displayed in shopping cart view
+            var SearchResults = JsonConvert.DeserializeObject<List<Item?>>(response) ?? new List<Item?>();
+            return SearchResults;
         }
 
         public Item? AddOrUpdate(Item item)
         {
+            var response = new WebRequestHandler().Post("/ShoppingCart", item).Result;
+            var responseItem = JsonConvert.DeserializeObject<Item>(response);
+
+            if (responseItem == null)
+            {
+                return item;
+            }
+
             var existingInvItem = _prodSvc.GetById(item.Id);
             if (existingInvItem == null || existingInvItem.Quantity == 0)
             {
@@ -76,6 +101,7 @@ namespace Library.eCommerce.Services
             {
                 return null;
             }
+            var result = new WebRequestHandler().Delete($"/ShoppingCart/{item.Id}").Result;
 
             var itemToReturn = cartItems.FirstOrDefault(c => c.Id == item.Id);
             if (itemToReturn != null)
@@ -92,24 +118,13 @@ namespace Library.eCommerce.Services
                 }
             }
 
-
-            return itemToReturn;
+            return JsonConvert.DeserializeObject<Item>(result);
         }
-        public decimal calTotal()
-        {
-            decimal Total = 0;
-            //Calculate the total price of all products in the cart
-            foreach (var item in cartItems)
-            {
-                if (item?.Product != null && item.Quantity > 0)
-                {
-                    Total += item.Product.Price * (item.Quantity ?? 0);
-                }
-            }
 
-            Total *= 1.07m; //Add 7% tax to the total price
-            //Print out the total price
-            return Total;
+        public decimal calTotal(decimal tax)
+        {
+            var response = new WebRequestHandler().Post("/ShoppingCart/Checkout", tax).Result;
+            return JsonConvert.DeserializeObject<decimal>(response);
         }
     }
 }

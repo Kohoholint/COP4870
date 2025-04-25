@@ -12,14 +12,28 @@ namespace Maui.eCommerce.ViewModels
     internal class CheckoutViewModel
     {
         private ShoppingCartServiceProxy cart = ShoppingCartServiceProxy.Current;
+        public decimal SubTotal
+        {
+            get
+            {
+                return cart.calTotal(1m); //Just gets subtotal
+            }
+        }
+        public decimal Tax
+        {
+            get
+            {
+                return cart.calTotal(0.07m); //Just gets tax
+            }
+        }
         public decimal Total
         {
             get
             {
-                return cart.calTotal();
+                return cart.calTotal(1.07m);    //Gets total with tax
             }
         }
-        //private decimal WithTax = 0.0m;
+
 
         public ObservableCollection<Item?> ShoppingCart
         {

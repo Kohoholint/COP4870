@@ -21,7 +21,7 @@ namespace Library.eCommerce.DTO
         {
             get
             {
-                return $"{Id}. {Name}\n (${Price}) \n";
+                return $"{Name}\n (${Price}) \n";
                 //return $"{Id}. {Name} ${Price} \n Quantity: {Quantity}";
             }
         }

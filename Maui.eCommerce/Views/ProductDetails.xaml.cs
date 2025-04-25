@@ -33,7 +33,6 @@ public partial class ProductDetails : ContentPage
         }
         else
         {
-
             BindingContext = new ProductViewModel(ProductServiceProxy.Current.GetById(ProductId));
         }
         

@@ -6,8 +6,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Assignment1.Models;
 using Library.eCommerce.Models;
 using Library.eCommerce.Services;
+
 
 namespace Maui.eCommerce.ViewModels
 {
@@ -15,26 +17,31 @@ namespace Maui.eCommerce.ViewModels
     {
         private ProductServiceProxy _invSvc = ProductServiceProxy.Current;
         private ShoppingCartServiceProxy _cartSvc = ShoppingCartServiceProxy.Current;
-        public ItemViewModel? SelectedItem { get; set; }
-        public ItemViewModel? SelectedCartItem { get; set; }
+        public string? Query { get; set; }
+        public Item? SelectedItem { get; set; }
+        public Item? SelectedCartItem { get; set; }
 
-        public ObservableCollection<ItemViewModel?> Inventory
+        public ObservableCollection<Item?> Inventory
         {
             get
             {
-                return new ObservableCollection<ItemViewModel?>(_invSvc.Products
-                    .Where(i => i?.Quantity > 0).Select(m => new ItemViewModel(m))
-                    );
+                var filteredList = _invSvc.Products
+                    .Where(p => p?.Product?.Name?.ToLower()
+                    .Contains(Query?.ToLower() ?? string.Empty) ?? false);
+
+                return new ObservableCollection<Item?>(filteredList.Where(i => i?.Quantity > 0));
             }
         }
 
-        public ObservableCollection<ItemViewModel?> ShoppingCart
+        public ObservableCollection<Item?> ShoppingCart
         {
             get
             {
-                return new ObservableCollection<ItemViewModel?>(_cartSvc.cartItems
-                    .Where(i => i?.Quantity > 0).Select(m => new ItemViewModel(m))
-                    );
+                var filteredList = _cartSvc.cartItems
+                    .Where(p => p?.Product?.Name?.ToLower()
+                    .Contains(Query?.ToLower() ?? string.Empty) ?? false);
+
+                return new ObservableCollection<Item?>(filteredList.Where(i => i?.Quantity > 0));
             }
         }
 
@@ -57,12 +64,21 @@ namespace Maui.eCommerce.ViewModels
             NotifyPropertyChanged(nameof(ShoppingCart));
         }
 
+        public async Task<bool> Search()
+        {
+            await _invSvc.Search(Query);
+            await _cartSvc.Search(Query);
+            NotifyPropertyChanged(nameof(Inventory));
+            NotifyPropertyChanged(nameof(ShoppingCart));
+            return true;
+        }
+
         public void PurchaseItem()
         {
             if (SelectedItem != null)
             {
-                var shouldRefresh = SelectedItem.Model.Quantity >= 1;
-                var updatedItem = _cartSvc.AddOrUpdate(SelectedItem.Model);
+                var shouldRefresh = SelectedItem.Quantity >= 1;
+                var updatedItem = _cartSvc.AddOrUpdate(SelectedItem);
 
                 if (updatedItem != null && shouldRefresh)
                 {
@@ -78,8 +94,8 @@ namespace Maui.eCommerce.ViewModels
         {
             if (SelectedCartItem != null)
             {
-                var shouldRefresh = SelectedCartItem.Model.Quantity >= 1;
-                var updatedItem = _cartSvc.ReturnItem(SelectedCartItem.Model);
+                var shouldRefresh = SelectedCartItem.Quantity >= 1;
+                var updatedItem = _cartSvc.ReturnItem(SelectedCartItem);
 
                 if (updatedItem != null && shouldRefresh)
                 {

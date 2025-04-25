@@ -94,12 +94,31 @@ namespace Api.eCommerce.Database
             }
         }
 
+        public static IEnumerable<Item?> Search(string? query)
+        {
+            return Current.Inventory.Where(p => p?.Product?.Name?.ToLower()
+                .Contains(query?.ToLower() ?? string.Empty) ?? false);
+        }
 
-        public bool Delete(string type, string id)
+
+        public bool Delete(string id) // Optional first parameter -> string type,
         {
             //TODO: refer to AddOrUpdate for an idea of how you can implement this.
-            return true;
+            //go to the right place
+            string path = $"{_productRoot}\\{id}.json";
+
+
+            //if the item has been previously persisted
+            if (File.Exists(path))
+            {
+                //blow it up
+                File.Delete(path);
+                return true;
+            }
+            return false;
         }
+
+
     }
 
 

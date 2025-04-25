@@ -55,8 +55,11 @@ namespace Library.eCommerce.Services
                 return new List<Item>();
             }
             var response = await new WebRequestHandler().Post("/Inventory/Search", new QueryRequest { Query = query });
-            Products = JsonConvert.DeserializeObject<List<Item?>>(response) ?? new List<Item?>();
-            return Products;
+            // Fixes a bug that stops full inventory from being displayed in shopping cart view
+            var SearchResults = JsonConvert.DeserializeObject<List<Item?>>(response) ?? new List<Item?>();
+            Console.WriteLine($"Search Results: {string.Join(", ", SearchResults.Select(r => r?.Display))}");
+
+            return SearchResults;
         }
         
 

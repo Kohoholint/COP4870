@@ -37,4 +37,9 @@ public partial class ShopView : ContentPage
     {
         (BindingContext as ShoppingViewModel).RefreshUX();
     }
+
+    private void SearchClicked(object sender, EventArgs e)
+    {
+        (BindingContext as ShoppingViewModel)?.Search();
+    }
 }
